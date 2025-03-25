@@ -2,6 +2,19 @@ import java.util.Scanner;
 
 public class Main {
 
+    public int escolherNoTipo () {
+        Scanner scanner = new Scanner(System.in);
+        int escolha;
+        do {
+            System.out.println("Escolha o tipo da sua estrutura:\n1=Integer\n2=String\n3=Float");
+            escolha=scanner.nextInt();
+        } while (escolha<1||escolha>3);
+        return escolha;
+
+    }
+
+
+
     public static int escolher (){
         int numero;
         Scanner scanner = new Scanner(System.in);

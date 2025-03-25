@@ -1,10 +1,10 @@
-public class No {
+public class NoInteger {
     private Integer conteudo;
     private Integer peso;
-    private No proximo;
-    private No anterior;
+    private NoInteger proximo;
+    private NoInteger anterior;
 
-    public No(Integer conteudo, Integer peso){
+    public NoInteger(Integer conteudo, Integer peso){
         setConteudo(conteudo);
         setPeso(peso);
         setProximo(null);
@@ -29,19 +29,19 @@ public class No {
         this.peso = peso;
     }
 
-    public No getProximo() {
+    public NoInteger getProximo() {
         return proximo;
     }
 
-    public void setProximo(No proximo) {
+    public void setProximo(NoInteger proximo) {
         this.proximo = proximo;
     }
 
-    public No getAnterior() {
+    public NoInteger getAnterior() {
         return anterior;
     }
 
-    public void setAnterior(No anterior) {
+    public void setAnterior(NoInteger anterior) {
         this.anterior = anterior;
     }
 }
