@@ -1,3 +1,5 @@
+package Filas;
+
 public class FilaSimples {
     private int tamanho;
     private Integer [] fila;
@@ -6,10 +8,14 @@ public class FilaSimples {
     public FilaSimples (int tamanho){
         setTamanho(tamanho);
         this.fila= new Integer[getTamanho()];
-        this.peso = new Integer[tamanho];
+        this.peso = new Integer[getTamanho()];
     }
     //Métodos Principais
-    public void adicionarFila (Integer conteudo, int peso){
+
+    //Na main colocar uma pergunta pro usuario se ele gostaria de dar peso ao conteudo
+    // caso não colocar o peso 0
+    //  Criar método modificar e achar, indice e conteudo
+    public void adicionarFila (Integer conteudo, Integer peso){
         if (!cheia()){
             System.out.println("Não há espaço na fila.");
         } else{
@@ -27,19 +33,20 @@ public class FilaSimples {
         if (vazia()){
             System.out.println("Não há elementos para serem resolvidos.");
         }else {
-                if (this.peso[1] >= 0){
+            if (this.peso[1] > 0){
                 this.fila[1] = null;
                 this.peso[1] = null;
-                }
-                else {
-                    this.peso[0] = null;
-                    this.fila[0] = null;
-                }
+            }
+            else {
+                this.peso[0] = null;
+                this.fila[0] = null;
+            }
+            arrumarFila();
 
         }
     }
 
-    public void arrumarFila (){
+    private void arrumarFila (){
         int i = 0;
         if (checarConteudoIndice(1)){
             i = 1;

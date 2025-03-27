@@ -1,12 +1,14 @@
+package Nos;
+
 public class NoInteger {
     private Integer conteudo;
     private Integer peso;
     private NoInteger proximo;
     private NoInteger anterior;
 
-    public NoInteger(Integer conteudo, Integer peso){
-        setConteudo(conteudo);
-        setPeso(peso);
+    public NoInteger(){
+        setConteudo(null);
+        setPeso(null);
         setProximo(null);
         setAnterior(null);
     }

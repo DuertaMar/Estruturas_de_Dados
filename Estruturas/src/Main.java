@@ -2,28 +2,50 @@ import java.util.Scanner;
 
 public class Main {
 
-    public int escolherNoTipo () {
+    public static int EscolherTipo() {
+        //Escolher o tipo da estrutura
         Scanner scanner = new Scanner(System.in);
         int escolha;
         do {
-            System.out.println("Escolha o tipo da sua estrutura:\n1=Integer\n2=String\n3=Float");
+            System.out.println("Escolha o tipo da sua estrutura:\n1=Integer\n2=String\n3=Float\n0=Sair");
             escolha=scanner.nextInt();
-        } while (escolha<1||escolha>3);
+        } while (escolha<0||escolha>3);
         return escolha;
 
     }
+    public static int EscolherMetodoSimples(){
+        //Métodos das classes Simples
+        Scanner scanner = new Scanner(System.in);
+        int escolha;
+        do {
+            System.out.println("Escolha o método:\n0=Sair\n2=Visualizar estrutura\n3=Adicionar Valor\n4=Excluir Valor"+
+                    "\n5=Encontrar Valor(conteudo)\n6=Encontrar Valor (indice)\n7=Modificar Valor por (conteudo)\n8=Modificar Valor por (indice)");
+            escolha=scanner.nextInt();
+        } while (escolha<0||escolha>8);
+        return escolha;
+    }
 
-
+    public static int EscolherMetodoDinamicos(){
+        //Métodos das classes dinamicas
+        Scanner scanner = new Scanner(System.in);
+        int escolha;
+        do {
+            System.out.println("Escolha o método:\n0=Sair\n2=Visualizar estrutura\n3=Adicionar Valor\n4=Excluir Valor"+
+                    "\n5=Encontrar Valor(conteudo)\n6=Encontrar Valor (contagem)\n7=Modificar Valor por (conteudo)\n8=Modificar Valor por (contagem)");
+            escolha=scanner.nextInt();
+        } while (escolha<0||escolha>8);
+        return escolha;
+    }
 
     public static int escolher (){
+        //Scanner normal
         int numero;
         Scanner scanner = new Scanner(System.in);
         numero = scanner.nextInt();
         return numero;
     }
     public static void main(String[] args) {
-        int escolhaEstrutura, escolhaTipo=9;
-
+        int escolhaEstrutura, escolhaTipo=9, escolhatipo2, metodos;
 
         Scanner scanner= new Scanner(System.in);
         do {
@@ -51,6 +73,26 @@ public class Main {
             if (escolhaTipo==1){
                 switch (escolhaEstrutura){
                     case 1:
+                        do {
+                            escolhatipo2= EscolherTipo();
+                            if (escolhatipo2==1){
+                                //Int e lista
+                                do {
+                                    metodos = EscolherMetodoSimples();
+
+
+                                } while (metodos!=0);
+
+                            }
+                            if (escolhatipo2==2) {
+                                //String e lista
+                            }
+                            if (escolhatipo2==3){
+                                //Float e lista
+
+                            }
+
+                        } while (escolhatipo2 == 0);
                         break;
                     case 2:
                         break;
@@ -70,7 +112,7 @@ public class Main {
                 }
 
             } else {
-                System.out.println("Obrigado por uar");
+                System.out.println("Obrigado por usar");
             }
 
         } while (escolhaEstrutura != 0 && escolhaTipo != 0);

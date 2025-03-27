@@ -1,4 +1,4 @@
-import java.util.Scanner;
+import Nos.NoInteger;
 
 public class BaseNoDinamica {
     private NoInteger noInteger;
@@ -20,7 +20,7 @@ public class BaseNoDinamica {
         }
     }
     public boolean vaziaNoInteger (NoInteger noInteger) {
-        if (noInteger!=null) {
+        if (noInteger !=null) {
             return true;
         }
         return false;
