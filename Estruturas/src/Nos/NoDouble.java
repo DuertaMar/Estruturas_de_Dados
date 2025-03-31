@@ -1,10 +1,10 @@
 package Nos;
 
-public class NoInteger extends  No
+public class NoDouble extends  No
 {
-    private Integer conteudo;
+    private Double conteudo;
 
-    public NoInteger(){
+    public NoDouble(){
         setConteudo(null);
         setPeso(null);
         setProximo(null);
@@ -13,11 +13,11 @@ public class NoInteger extends  No
 
 
     //Get e set
-    public Integer getConteudo() {
+    public Double getConteudo() {
         return conteudo;
     }
 
-    public void setConteudo(Integer conteudo) {
+    public void setConteudo(Double conteudo) {
         this.conteudo = conteudo;
     }
 

@@ -1,4 +1,4 @@
-package Pilhas;
+package Simples;
 
 public class PilhaSimples {
     private int tamanho;
@@ -20,7 +20,7 @@ public class PilhaSimples {
             System.out.println("Não há espaço na pilha.");
         } else{
             for (int i = 0; i < tamanho; i++) {
-                if (checarConteudoIndice(i)){
+                if (checarIndice(i)){
                     this.peso[i] = peso;
                     this.pilha [i]= conteudo;
                 }
@@ -53,6 +53,13 @@ public class PilhaSimples {
 
     // Métodos auxiliares
 
+    public void mostrarFila() {
+        System.out.println("Exibindo elementos da lista.");
+        for (int i = 0; i < this.tamanho; i++) {
+            System.out.println("Phila[" + (i+1) + "] = " + this.pilha[i]+ "Peso["+this.peso[i]+"]");
+        }
+    }
+
     public boolean cheia() {
         for (int i = 0; i < tamanho; i++) {
             if(this.pilha[i] == null) {
@@ -78,7 +85,7 @@ public class PilhaSimples {
     }
 
 
-    public boolean checarConteudoIndice (int indice){
+    public boolean checarIndice (int indice){
         if (this.pilha[indice] == null){
             return true;
         } else {

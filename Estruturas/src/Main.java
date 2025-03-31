@@ -1,123 +1,117 @@
+import Simples.FilaSimples;
+import Simples.ListaSimples;
+import Simples.PilhaSimples;
+
 import java.util.Scanner;
 
 public class Main {
-
-    public static int EscolherTipo() {
-        //Escolher o tipo da estrutura
-        Scanner scanner = new Scanner(System.in);
-        int escolha;
-        do {
-            System.out.println("Escolha o tipo da sua estrutura:\n1=Integer\n2=String\n3=Float\n0=Sair");
-            escolha=scanner.nextInt();
-        } while (escolha<0||escolha>3);
-        return escolha;
-
-    }
-    public static int EscolherMetodoSimples(){
-        //Métodos das classes Simples
-        Scanner scanner = new Scanner(System.in);
-        int escolha;
-        do {
-            System.out.println("Escolha o método:\n0=Sair\n2=Visualizar estrutura\n3=Adicionar Valor\n4=Excluir Valor"+
-                    "\n5=Encontrar Valor(conteudo)\n6=Encontrar Valor (indice)\n7=Modificar Valor por (conteudo)\n8=Modificar Valor por (indice)");
-            escolha=scanner.nextInt();
-        } while (escolha<0||escolha>8);
-        return escolha;
-    }
-
-    public static int EscolherMetodoDinamicos(){
-        //Métodos das classes dinamicas
-        Scanner scanner = new Scanner(System.in);
-        int escolha;
-        do {
-            System.out.println("Escolha o método:\n0=Sair\n2=Visualizar estrutura\n3=Adicionar Valor\n4=Excluir Valor"+
-                    "\n5=Encontrar Valor(conteudo)\n6=Encontrar Valor (contagem)\n7=Modificar Valor por (conteudo)\n8=Modificar Valor por (contagem)");
-            escolha=scanner.nextInt();
-        } while (escolha<0||escolha>8);
-        return escolha;
-    }
-
-    public static int escolher (){
-        //Scanner normal
-        int numero;
-        Scanner scanner = new Scanner(System.in);
-        numero = scanner.nextInt();
-        return numero;
-    }
     public static void main(String[] args) {
-        int escolhaEstrutura, escolhaTipo=9, escolhatipo2, metodos;
 
-        Scanner scanner= new Scanner(System.in);
+        int tipoEstrutura, estrutura,metodo,funcoes,funcoes2;
+        ListaSimples listaSimples = new ListaSimples(10);
+        FilaSimples filaSimples= new FilaSimples(10);
+        PilhaSimples pilhaSimples= new PilhaSimples(10);
         do {
-
             do {
-                System.out.println("Escolha qual estrutura você gostaria de usar");
-                System.out.println("1_Lista");
-                System.out.println("2_Fila");
-                System.out.println("3_Pilha");
-                System.out.println("0_Sair");
+                System.out.println("Simples ou Dinamica");
+                System.out.println("0=Sair  1=Simples  2=Dinamica");
+                tipoEstrutura = perguntarInt();
+            } while (tipoEstrutura<0||tipoEstrutura>2);
 
-                escolhaEstrutura = escolher();
-            } while (escolhaEstrutura <0 || escolhaEstrutura >3);
-            if (escolhaEstrutura != 0) {
-                do {
-                    System.out.println("Escolha se é simples ou dinamica");
-                    System.out.println("1_Simples");
-                    System.out.println("2_Dinamica");
-                    System.out.println("0_Sair");
-                    escolhaTipo = escolher();
-                } while (escolhaTipo < 0 || escolhaTipo > 2);
-
-            }
-
-            if (escolhaTipo==1){
-                switch (escolhaEstrutura){
-                    case 1:
+            if (tipoEstrutura == 1) {
+                estrutura = escolherEstrutura();
+                if (estrutura==1){
+                    //Lista Simples
+                    do {
                         do {
-                            escolhatipo2= EscolherTipo();
-                            if (escolhatipo2==1){
-                                //Int e lista
-                                do {
-                                    metodos = EscolherMetodoSimples();
-
-
-                                } while (metodos!=0);
-
+                            metodosListaSimples();
+                            metodo = perguntarInt();
+                        } while (metodo < 0 || metodo > 5);
+                        if (metodo==1){
+                            listaSimples.mostrarLista();
+                        }
+                        if (metodo==2){
+                            listaSimples.adicionarLista(perguntarInt());
+                        }
+                        if (metodo==3){
+                            listaSimples.removerPorIndice((perguntarInt()-1));
+                        }
+                        if (metodo==4){
+                            funcoes = perguntarInt();
+                            funcoes = funcoes-1;
+                            if (listaSimples.checarIntervalo(funcoes)){
+                                if (listaSimples.checarIndice(funcoes)){
+                                    System.out.println("Indice null");
+                                } else {
+                                    System.out.println("Há coisas neste indice ["+(funcoes+1)+"]");
+                                }
+                            } else {
+                                System.out.println("Indice incorreto");
                             }
-                            if (escolhatipo2==2) {
-                                //String e lista
-                            }
-                            if (escolhatipo2==3){
-                                //Float e lista
 
-                            }
-
-                        } while (escolhatipo2 == 0);
-                        break;
-                    case 2:
-                        break;
-                    case 3:
-                        break;
+                        }
+                        if (metodo==5){
+                            funcoes= perguntarInt();
+                            funcoes=funcoes-1;
+                            listaSimples.checarIntervalo(funcoes);
+                        }
+                    } while (metodo!=0);
 
                 }
-
-            } else if (escolhaTipo==2) {
-                switch (escolhaEstrutura){
-                    case 1:
-                        break;
-                    case 2:
-                        break;
-                    case 3:
-                        break;
+                //Fila e Pilha tem como padronizar, mas Lista não.
+                if (estrutura==2){
+                    //Fila Simples
+                    metodosFilaSimples();
                 }
-
-            } else {
-                System.out.println("Obrigado por usar");
+                if (estrutura==3){
+                    //Pilha Simples
+                    metodosPilhaSimples();
+                }
             }
-
-        } while (escolhaEstrutura != 0 && escolhaTipo != 0);
-
+            if (tipoEstrutura == 2){
+                estrutura = escolherEstrutura();
+                if (estrutura==1){}
+                if (estrutura==2){}
+                if (estrutura==3){}
+            }
+        } while (tipoEstrutura!= 0);
+        System.out.println("Obrigado por usar.");
     }
 
-}
 
+    public static int escolherEstrutura(){
+        int estrutura;
+        do {
+            System.out.println("Escolha a estrutura\n0=Sair  1=Lista  2=Fila  3=Pilha");
+            estrutura = perguntarInt();
+        } while (estrutura<0||estrutura>3);
+
+        return estrutura;
+    }
+
+    public static void metodosPilhaSimples(){
+        System.out.println("Métodos da Pilha Simples\n0=Sair  1=Mostrar Pilha  2=Adicionar Conteudo\n" +
+                "3=Remover Conteudo  4=Checar Indice  5=Ultimo elemento");
+    }
+
+    public static void metodosListaSimples(){
+        System.out.println("Métodos da Lista Simples\n0=Sair  1=Mostrar Lista  2=Adicionar Conteudo\n" +
+                "3=Remover Conteudo(Por Indice)  4=Checar Indice   5=Checar Intervalo");
+        // Falta um método de ver o tamanho da lista e aumentar ou diminuir o tamanho.
+        // além de retirar os outros métodos a mais
+    }
+
+    public static void metodosFilaSimples(){
+        System.out.println("Métodos da Fila Simples\n0=Sair  1=Mostrar Fila  2=Adicionar Conteudo\n" +
+                "3=Remover Conteudo  4=Checar Indice  5=Cheia?");
+    }
+
+
+
+    public static int perguntarInt (){
+        Scanner scanner = new Scanner(System.in);
+        int perguntar;
+        perguntar = scanner.nextInt();
+        return perguntar;
+    }
+}

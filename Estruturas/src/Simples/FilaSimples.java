@@ -1,4 +1,4 @@
-package Filas;
+package Simples;
 
 public class FilaSimples {
     private int tamanho;
@@ -20,7 +20,7 @@ public class FilaSimples {
             System.out.println("Não há espaço na fila.");
         } else{
             for (int i = 0; i < tamanho; i++) {
-                if (checarConteudoIndice(i)){
+                if (checarIndice(i)){
                     this.fila[i] = conteudo;
                     this.peso[i] = peso;
 
@@ -48,10 +48,10 @@ public class FilaSimples {
 
     private void arrumarFila (){
         int i = 0;
-        if (checarConteudoIndice(1)){
+        if (checarIndice(1)){
             i = 1;
         }
-        while(i < tamanho-1 && !checarConteudoIndice(i+1) ) {
+        while(i < tamanho-1 && !checarIndice(i+1) ) {
             this.fila[i] = this.fila[i+1];
             this.peso[i] = this.peso[i+1];
             i = i+1;
@@ -67,6 +67,13 @@ public class FilaSimples {
 
     //Métodos Auxilires
 
+    public void mostrarFila() {
+        System.out.println("Exibindo elementos da lista.");
+        for (int i = 0; i < this.tamanho; i++) {
+            System.out.println("Fila[" + (i+1) + "] = " + this.fila[i]+ "Peso["+this.peso[i]+"]");
+        }
+    }
+
     public boolean cheia() {
         for (int i = 0; i < tamanho; i++) {
             if(this.fila[i] == null) {
@@ -77,7 +84,7 @@ public class FilaSimples {
     }
 
 
-    public boolean checarConteudoIndice (int indice){
+    public boolean checarIndice (int indice){
         if (this.fila[indice] == null){
             return true;
         } else {

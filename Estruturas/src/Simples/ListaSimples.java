@@ -1,4 +1,4 @@
-package Lista;
+package Simples;
 
 public class ListaSimples {
     private int tamanho;
@@ -10,14 +10,14 @@ public class ListaSimples {
         System.out.println("A lista criada foi criada com sucesso. Seu tamanho é igual a:" + tamanhoEstrutura);
     }
 
-    public void verLista() {
+    public void mostrarLista() {
         System.out.println("Exibindo elementos da lista.");
         for (int i = 0; i < this.tamanho; i++) {
             System.out.println("Lista[" + (i+1) + "] = " + this.lista[i]);
         }
     }
 
-    public void inserirValor(int valor) {
+    public void adicionarLista(int valor) {
         for (int i = 0; i < tamanho; i++) {
             if(checarIndice(i)) {
                 this.lista[i] = valor;
@@ -45,7 +45,17 @@ public class ListaSimples {
             }
         }
     }
+    //Não possuo nos outros simples
 
+    public boolean checarIntervalo(int indice) {
+        if(indice >= 0 && indice < this.tamanho){
+            return true;
+        }
+        System.out.println("O indice informado está fora do intervalo.");
+        return false;
+    }
+    /*
+//  Não possuo nos outros indices
     public boolean buscaValor(int valor) {
         for (int i = 0; i < this.tamanho; i++) {
             if(!checarIndice(i)) {
@@ -66,11 +76,18 @@ public class ListaSimples {
         return false;
     }
 
-    public boolean checarIntervalo(int indice) {
-        if(indice >= 0 && indice < this.tamanho){
-            return true;
+
+
+
+    public void modificarValorporIndice (int indice, int valor){
+        if (checarIntervalo(indice)){
+            lista[indice] = valor;
         }
-        System.out.println("O indice informado está fora do intervalo.");
-        return false;
+    }
+
+    */
+
+    public int getTamanho() {
+        return tamanho;
     }
 }
