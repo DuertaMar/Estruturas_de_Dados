@@ -1,5 +1,7 @@
 package Nos;
 
+import InterfacesAtividade.INo;
+
 public class NoInteger extends  No
 {
     private Integer conteudo;
