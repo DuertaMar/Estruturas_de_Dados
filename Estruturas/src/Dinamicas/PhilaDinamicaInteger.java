@@ -107,7 +107,7 @@ public class PhilaDinamicaInteger implements IEstruturaDinamica {
     public No obterUltimoElemento() {
         return null;
         //Já existem com outro nome
-    }*
+    }
 
     //Metodos Normais
 
