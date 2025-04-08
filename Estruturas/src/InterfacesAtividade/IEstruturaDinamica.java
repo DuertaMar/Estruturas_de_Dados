@@ -10,7 +10,7 @@ public interface IEstruturaDinamica {
     void removerSequencia(Object elementos);
     void removerTodasOcorrencias(Object elemento);
     boolean estaCheia();
-    boolean estaVazia();
+    boolean vazia();
     boolean buscarElemento(Object elemento);
     void ordenarCrescente();
     void ordenarDecrescente();

@@ -8,24 +8,16 @@ public class PhilaDinamicaInteger implements IEstruturaDinamica {
     private NoInteger  primeiro;
     private NoInteger ultimo;
 
-    public PhilaDinamicaInteger (){
-        this.primeiro = new NoInteger();
-        this.ultimo= this.primeiro;
-    }
-
-
-
-
     //Métodos da interface
 
     @Override
     public void inserirElemento(Object elemento) {
-    //Gabriel
+        //Gabriel
     }
 
     @Override
     public void inserirSequencia(Object elementos) {
-    //Gabriel
+        //Gabriel
     }
 
     @Override
@@ -37,12 +29,12 @@ public class PhilaDinamicaInteger implements IEstruturaDinamica {
 
     @Override
     public void removerSequencia(Object elementos) {
-    //João
+        //João
     }
 
     @Override
     public void removerTodasOcorrencias(Object elemento) {
-    //João
+        //João
     }
 
     @Override
@@ -50,14 +42,6 @@ public class PhilaDinamicaInteger implements IEstruturaDinamica {
         return false;
         //Não precisa fazer
     }
-    /*
-    @Override
-    public boolean estaVazia() {
-        return false;
-
-    }
-
-     */
 
     @Override
     public boolean buscarElemento(Object elemento) {
@@ -72,7 +56,7 @@ public class PhilaDinamicaInteger implements IEstruturaDinamica {
 
     @Override
     public void ordenarDecrescente() {
-    //Yuri
+        //Yuri
     }
 
     @Override
@@ -83,12 +67,12 @@ public class PhilaDinamicaInteger implements IEstruturaDinamica {
 
     @Override
     public void editarElemento(Object elementoAntigo, Object elementoNovo) {
-    //Gabriel
+        //Gabriel
     }
 
     @Override
     public void limpar() {
-    //João
+        //João
     }
 
 
@@ -115,14 +99,14 @@ public class PhilaDinamicaInteger implements IEstruturaDinamica {
         NoInteger aux = this.primeiro;
 
         if (vazia()) {
-            System.out.println("A Fila está vazia");
+            System.out.println("A Pilha está vazia");
         }
         else {
-            System.out.println("Fila:");
+            System.out.println("Phila:");
             do {
                 System.out.println("Conteudo[" + aux.getConteudo() + "] " +  "Peso["+aux.getPeso()+"]");
                 aux = aux.getProximo();
-            } while (aux!=ultimo);
+            } while (aux!=ultimo.getProximo());
 
         }
     }
@@ -143,15 +127,31 @@ public class PhilaDinamicaInteger implements IEstruturaDinamica {
 
     public void removerPhila () {
         NoInteger aux = ultimo;
+        NoInteger aux2;
+        if (!vazia()) {
 
-        if (this.ultimo.getAnterior().getPeso() > 0) {
-            aux = aux.getAnterior().getAnterior();
-            this.ultimo.setAnterior(ultimo.getAnterior().getAnterior());
-            aux.setProximo(ultimo);
-
+            if (this.ultimo == this.primeiro) {
+                this.primeiro = null;
+            } else if (this.ultimo.getAnterior().getPeso() > 0) {
+                // problema acontece quando o peso for no primero.
+                if (this.ultimo.getAnterior()==this.primeiro){
+                    aux = this.primeiro;
+                    this.primeiro=this.ultimo;
+                    this.primeiro.setProximo(null);
+                    aux=null;
+                } else {
+                    aux2=aux.getAnterior();
+                    aux = aux.getAnterior().getAnterior();
+                    this.ultimo.setAnterior(ultimo.getAnterior().getAnterior());
+                    aux.setProximo(ultimo);
+                    aux2=null;
+                }
+            } else {
+                this.ultimo = ultimo.getAnterior();
+                this.ultimo.setProximo(null);
+            }
         } else {
-            this.ultimo = ultimo.getAnterior();
-            this.ultimo.setProximo(null);
+            System.out.println("A pilha está vazia");
         }
     }
 
@@ -190,3 +190,5 @@ public class PhilaDinamicaInteger implements IEstruturaDinamica {
     }
 
 }
+
+
