@@ -11,7 +11,7 @@ public interface IEstruturaDinamica {
     void removerTodasOcorrencias(Object elemento);
     boolean estaCheia();
     boolean vazia();
-    boolean buscarElemento(Object elemento);
+    boolean buscarElemento(Integer elemento, Integer peso);
     void ordenarCrescente();
     void ordenarDecrescente();
     int quantidadeElementos();

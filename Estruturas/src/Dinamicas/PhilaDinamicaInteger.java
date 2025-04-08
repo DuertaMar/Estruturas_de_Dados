@@ -43,10 +43,28 @@ public class PhilaDinamicaInteger implements IEstruturaDinamica {
         //Não precisa fazer
     }
 
+
+
+    //Importante lembrar que este buscar elemento também buscará pelo peso então se tiver peso é bom saber.
+    //Caso o usuário não saiba o peso por padrão sempre é bom lembrar que o peso é 1
+    //E mais importante o peso também poderia ser boolena (true), (false), caso tena mais de um nivel
+    // de peso ao invez de apenas 0 e 1.
     @Override
-    public boolean buscarElemento(Object elemento) {
-        return false;
-        //Gabriel
+    public boolean buscarElemento(Integer conteudo, Integer peso) {
+        NoInteger aux = this.primeiro;
+
+        if (vazia()){
+            return false;
+        } else {
+            do {
+                if (aux.getConteudo()==conteudo&&aux.getPeso()==peso){
+                    return true;
+                }
+                aux= aux.getProximo();
+            }while (aux!=ultimo.getProximo());
+            return false;
+        }
+
     }
 
     @Override
