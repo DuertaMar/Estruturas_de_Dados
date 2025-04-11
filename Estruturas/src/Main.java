@@ -1,3 +1,4 @@
+import Dinamicas.PhilaDinamicaInteger;
 import Simples.FilaSimples;
 import Simples.ListaSimples;
 import Simples.PilhaSimples;
