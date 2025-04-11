@@ -4,6 +4,8 @@ import InterfacesAtividade.IEstruturaDinamica;
 import Nos.No;
 import Nos.NoInteger;
 
+import java.util.List;
+
 public class PhilaDinamicaInteger implements IEstruturaDinamica {
     private NoInteger  primeiro;
     private NoInteger ultimo;
@@ -22,19 +24,65 @@ public class PhilaDinamicaInteger implements IEstruturaDinamica {
 
     @Override
     public boolean removerElemento(Object elemento) {
-        return false;
         //Existe algo simmilar, mas é a remoção considerando a regra da estrutura
         //João
+        if (vazia()) {
+            return false;
+        }
+
+        Integer valor = (Integer) elemento;
+        NoInteger aux = primeiro;
+
+        while (aux != null) {
+            if (aux.getConteudo().equals(valor)) {
+                if (aux.getAnterior() != null) {
+                    aux.getAnterior().setProximo(aux.getProximo());
+                } else {
+                    this.primeiro = aux.getProximo();
+                }
+
+                if (aux.getProximo() != null) {
+                    aux.getProximo().setAnterior(aux.getAnterior());
+                } else {
+                    this.ultimo = aux.getAnterior();
+                }
+
+                return true;
+            }
+            aux = aux.getProximo();
+        }
+        return false;
     }
 
     @Override
     public void removerSequencia(Object elementos) {
         //João
+        if (vazia()) {
+            System.out.println("A pilha está vazia. Nada a remover.");
+            return;
+        }
+        List<Integer> lista = (List<Integer>) elementos;
+        for (int i = 0; i < lista.size(); i++) {
+            removerTodasOcorrencias(lista.get(i));
+        }
+        System.out.println("Sequência removida da pilha.");
     }
 
     @Override
     public void removerTodasOcorrencias(Object elemento) {
         //João
+        int removidos = 0;
+        while (removerElemento(elemento)) {
+            removidos++;
+        }
+        System.out.println(removidos + " ocorrência(s) do elemento [" + elemento + "] removida(s).");
+    }
+
+    @Override
+    public void limpar() {
+        //João
+        this.primeiro = null;
+        this.ultimo = null;
     }
 
     @Override
@@ -89,12 +137,6 @@ public class PhilaDinamicaInteger implements IEstruturaDinamica {
     }
 
     @Override
-    public void limpar() {
-        //João
-    }
-
-
-    @Override
     public void exibir() {
         //Já existem com outro nome
     }
@@ -129,7 +171,7 @@ public class PhilaDinamicaInteger implements IEstruturaDinamica {
         }
     }
 
-    public void adicionarPhila (Integer conteudo, Integer peso){
+    public void adicionarPilha (Integer conteudo, Integer peso){
         NoInteger novoNo = new NoInteger();
         novoNo.setConteudo(conteudo);
         novoNo.setPeso(peso);
